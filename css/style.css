@@ -1,0 +1,63 @@
+body {
+    background:#fff url(../images/2.png) repeat-x;
+    border-top:5px solid #333;
+    color:#555;
+    font-family: times;
+    line-height:1.5;
+    margin:0;
+    padding:0;
+    text-align:center;
+    text-decoration:none;
+}
+
+#chapter-body {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#more {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #999;
+    background: #ddd;
+    margin-bottom: 16px;
+}
+
+#more:hover {
+    color: #000;
+    border: 1px solid #777;
+    background: #bbb;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+#working {
+    margin-bottom: 16px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inlineTagImage {
+    float:left;
+}
+
+p {
+    padding-bottom: 16px;
+}
+
+table {
+    border: 0;
+}
+
+td {
+    vertical-align: top;
+}
+
+#dialog {
+    font-size:62.5%;
+    text-align:left;
+}
