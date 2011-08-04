@@ -10,6 +10,12 @@ body {
     text-decoration:none;
 }
 
+#menu {
+  text-align: left;
+  font-family: arial;
+  margin-left: 2px;
+}
+
 #chapter-body {
     width: 80%;
     margin-left: auto;
@@ -55,6 +61,21 @@ table {
 
 td {
     vertical-align: top;
+}
+
+a:link {
+  color: blue;
+  text-decoration: none;
+}
+
+a:visited {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: blue;
+  text-decoration: underline;
 }
 
 #dialog {
