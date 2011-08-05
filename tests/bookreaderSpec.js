@@ -13,56 +13,56 @@ describe("bookreader.js", function() {
   beforeEach(function() {
     this.server = sinon.fakeServer.create();
     this.xhr = sinon.useFakeXMLHttpRequest();
-    this.bookreader = bookreader({username: "username", password: "password"});
+    this.reader = bookreader({username: "username", password: "password"});
   });
 
   describe("Bookreader object", function() {
     it("should insist a user log in for a session", function() {
       try {
-        var bookreader = bookreader();
+        var reader = bookreader();
       } catch(e) {
         var exception = e;
       }
-      expect(exception.name).toEqual(ValueError);
+      expect(exception.name).toEqual("ValueError");
       var options = {username: "test"}
       try {
-        var bookreader = bookreader(options);
+        var reader = bookreader(options);
       } catch(e) {
         var exception = e;
       }
-      expect(exception.name).toEqual(ValueError);
+      expect(exception.name).toEqual("ValueError");
       var options = {password: "test"}
       try {
-        var bookreader = bookreader(options);
+        var reader = bookreader(options);
       } catch(e) {
         var exception = e;
       }
-      expect(exception.name).toEqual(ValueError);
-      var bookreader = bookreader({username: "test", password: "test"});
-      expect(typeof(bookreader)).toEqual("object");
+      expect(exception.name).toEqual("ValueError");
+      var reader = bookreader({username: "test", password: "test"});
+      expect(typeof(reader)).toEqual("object");
     });
 
     it("should have a function to return an appropriately configured work object", function() {
-      var work = this.bookreader.getWork({title: "The Three Bears"});
+      var work = this.reader.getWork({title: "The Three Bears"});
       expect(typeof(work)).toEqual("object");
     });
 
     it("should insist on a title of a work to be supplied to getWork", function() {
       try {
-        var work = this.bookreader.getWork({});
+        var work = this.reader.getWork({});
       } catch(e) {
         var exception = e;
       }
-      expect(exception.name).toEqual(ValueError);
+      expect(exception.name).toEqual("ValueError");
     });
 
     it("should have a function to return an appropriately configured friends object", function() {
-      var friends = this.bookreader.getFriends();
+      var friends = this.reader.getFriends();
       expect(typeof(friends)).toEqual("object");
     });
 
     it("should have a function to return an appropriately configured library object", function() {
-      var library = this.bookreader.getLibrary();
+      var library = this.reader.getLibrary();
       expect(typeof(library)).toEqual("object");
     });
   });
