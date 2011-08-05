@@ -13,38 +13,57 @@ describe("bookreader.js", function() {
   beforeEach(function() {
     this.server = sinon.fakeServer.create();
     this.xhr = sinon.useFakeXMLHttpRequest();
-    this.fi = fluidinfo({username: "username", password: "password"});
+    this.bookreader = bookreader({username: "username", password: "password"});
   });
 
   describe("Bookreader object", function() {
-    it("should allow a user to log in for a session", function() {
-    });
-
-    it("should allow a user to log out of a session", function() {
-    });
-
-    it("should store session details locally on the browser", function() {
-    });
-
-    it("should remember session details from the browser local storage", function() {
+    it("should insist a user log in for a session", function() {
+      try {
+        var bookreader = bookreader();
+      } catch(e) {
+        var exception = e;
+      }
+      expect(exception.name).toEqual(ValueError);
+      var options = {username: "test"}
+      try {
+        var bookreader = bookreader(options);
+      } catch(e) {
+        var exception = e;
+      }
+      expect(exception.name).toEqual(ValueError);
+      var options = {password: "test"}
+      try {
+        var bookreader = bookreader(options);
+      } catch(e) {
+        var exception = e;
+      }
+      expect(exception.name).toEqual(ValueError);
+      var bookreader = bookreader({username: "test", password: "test"});
+      expect(typeof(bookreader)).toEqual("object");
     });
 
     it("should have a function to return an appropriately configured work object", function() {
+      var work = this.bookreader.getWork({title: "The Three Bears"});
+      expect(typeof(work)).toEqual("object");
+    });
+
+    it("should insist on a title of a work to be supplied to getWork", function() {
+      try {
+        var work = this.bookreader.getWork({});
+      } catch(e) {
+        var exception = e;
+      }
+      expect(exception.name).toEqual(ValueError);
     });
 
     it("should have a function to return an appropriately configured friends object", function() {
+      var friends = this.bookreader.getFriends();
+      expect(typeof(friends)).toEqual("object");
     });
 
     it("should have a function to return an appropriately configured library object", function() {
-    });
-
-    it("should only return work objects if the user is signed in", function() {
-    });
-
-    it("should only return friends objects if the user is signed in", function() {
-    });
-
-    it("should only return library objects if the user is signed in", function() {
+      var library = this.bookreader.getLibrary();
+      expect(typeof(library)).toEqual("object");
     });
   });
 
